@@ -4,24 +4,29 @@
   Design tokens for 630 Mobile Auto Repair.
 
   Vibe: a real shop's work-order/signage identity, not a tech-startup
-  landing page — cream paper, hard black rules, condensed uppercase
+  landing page — light grey ground, hard rules, condensed uppercase
   headline type (garage signage, not editorial serif), one accent color
   used sparingly. Deliberately avoids the dark-hero + soft-serif +
   rounded-card pattern common to generic site templates.
+
+  Palette: Deep Teal + Copper ("premium and approachable"), background
+  moved from the original warm-white/greige spec to a light, slightly
+  cool-toned grey per direction.
 */
 :root {
-  --color-ink: #14140f;        /* near-black, headlines/body on light */
-  --color-ink-soft: #3a3a33;   /* secondary text on light */
-  --color-paper: #f7f4ec;      /* cream paper background */
-  --color-paper-alt: #efe9d8;  /* section separation on light */
-  --color-charcoal: #1c1c17;   /* dark section background, used sparingly */
-  --color-charcoal-soft: #2a2a23;
-  --color-line: #14140f;       /* hairline borders are ink, not gray */
-  --color-line-dark: #4a4a3f;
-  --color-accent: #c7551a;     /* burnt-amber accent — CTAs only */
-  --color-accent-dark: #a8460f;
-  --color-accent-contrast: #fff8f0;
-  --color-focus: #1e7a5f;      /* distinct focus ring, never used for CTAs */
+  --color-ink: #092b2e;        /* dark teal — headlines/body/hairlines on light */
+  --color-ink-soft: #4c6265;   /* muted teal-grey secondary text (darkened from
+                                   the #68787A spec for AA contrast on light grey) */
+  --color-paper: #eef1f1;      /* light, faintly cool-toned grey background */
+  --color-paper-alt: #e3e7e7;  /* section separation on light */
+  --color-charcoal: #092b2e;   /* dark section background, used sparingly */
+  --color-charcoal-soft: #123c40;
+  --color-line: #092b2e;       /* hairline borders are ink, not gray */
+  --color-line-dark: #3e5a5c;
+  --color-accent: #c96f3b;     /* copper accent — CTAs only */
+  --color-accent-dark: #a85a2c;
+  --color-accent-contrast: #092b2e; /* dark teal text on copper, per spec */
+  --color-focus: #2d6cdf;      /* distinct focus ring, never used for CTAs */
 
   --font-display: var(--font-oswald);
   --font-sans: var(--font-ibm-plex);

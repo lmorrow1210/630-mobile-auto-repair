@@ -127,9 +127,14 @@ each has a `// TODO(verify)` comment at its definition:
 
 ## Design notes
 
-- **Palette**: cream paper background, near-black ink for text and hairline borders, dark charcoal
-  used sparingly for high-authority sections (final CTA, footer, contact band), one burnt-amber accent
-  reserved for conversion actions only. Tokens are CSS custom properties in `src/app/globals.css`.
+- **Palette**: Deep Teal + Copper — a light, cool-toned grey background (`#eef1f1`, not warm/cream),
+  dark teal ink for text and hairline borders (`#092b2e`), dark teal used sparingly for high-authority
+  sections (final CTA, footer, contact band), one copper accent (`#c96f3b`) reserved for conversion
+  actions only. The muted secondary-text tone was darkened from the original palette spec
+  (`#68787a` → `#4c6265`) to clear WCAG AA on the new background — see the token comments in
+  `src/app/globals.css`. The copper CTA (copper background, dark teal text) sits at ~4.2:1 contrast,
+  which is fine for bold/uppercase button labels but worth keeping in mind if that combination is ever
+  reused for smaller or regular-weight text.
 - **Type**: Oswald (bold condensed uppercase) for headlines — a garage-signage/work-order feel rather
   than an editorial serif — paired with IBM Plex Sans for UI/body text and IBM Plex Mono for
   ticket-style labels (trust strip, service tag, service list numbering).

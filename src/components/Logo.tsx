@@ -33,7 +33,7 @@ export function Logo({ variant = "dark" }: { variant?: "dark" | "light" }) {
         </span>
         <span
           className="block text-[0.6rem] font-semibold tracking-[0.28em] uppercase"
-          style={{ color: variant === "dark" ? "var(--color-ink-soft)" : "#cfcdc2" }}
+          style={{ color: variant === "dark" ? "var(--color-ink-soft)" : "#9fb8b6" }}
         >
           Repair
         </span>
