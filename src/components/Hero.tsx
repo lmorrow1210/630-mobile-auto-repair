@@ -22,7 +22,7 @@ export function Hero({ headline, subhead, cityName, smsPrefill }: HeroProps) {
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-(--color-accent)">
           Mobile Service · No Shop Visit Required
         </p>
-        <h1 className="max-w-2xl font-display text-4xl leading-[1.02] tracking-tight sm:text-6xl">
+        <h1 className="max-w-2xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
           {headline}
         </h1>
         <p className="max-w-lg text-lg leading-relaxed text-(--color-paper)/85">{subhead}</p>

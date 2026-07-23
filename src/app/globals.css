@@ -3,15 +3,18 @@
 /*
   Design tokens for 630 Mobile Auto Repair.
 
-  Vibe: a real shop's work-order/signage identity, not a tech-startup
-  landing page — light grey ground, hard rules, condensed uppercase
-  headline type (garage signage, not editorial serif), one accent color
-  used sparingly. Deliberately avoids the dark-hero + soft-serif +
-  rounded-card pattern common to generic site templates.
+  Vibe: a real shop's work-order identity, not a tech-startup landing
+  page — light grey ground, hard rules, one accent color used sparingly.
+  Deliberately avoids the dark-hero + soft-serif + rounded-card pattern
+  common to generic site templates.
 
   Palette: Deep Teal + Copper ("premium and approachable"), background
   moved from the original warm-white/greige spec to a light, slightly
   cool-toned grey per direction.
+
+  Type: normal-case, non-condensed grotesque headlines (Archivo) — closer
+  to the readability of the Ford site than an all-caps condensed display
+  face.
 */
 :root {
   --color-ink: #092b2e;        /* dark teal — headlines/body/hairlines on light */
@@ -28,7 +31,7 @@
   --color-accent-contrast: #092b2e; /* dark teal text on copper, per spec */
   --color-focus: #2d6cdf;      /* distinct focus ring, never used for CTAs */
 
-  --font-display: var(--font-anton);
+  --font-display: var(--font-archivo);
   --font-sans: var(--font-ibm-plex);
   --font-mono: var(--font-ibm-plex-mono);
 }
@@ -84,9 +87,8 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display), Impact, "Arial Narrow", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.005em;
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 /* Consistent, visible focus ring across the site — never rely on color alone. */

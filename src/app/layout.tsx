@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -8,10 +8,12 @@ import { MobileStickyBar } from "@/components/MobileStickyBar";
 import { business, siteUrl } from "@/data/business";
 import { localBusinessSchema } from "@/lib/seo";
 
-const anton = Anton({
-  variable: "--font-anton",
+// Clean, non-condensed grotesque with normal-case headlines — closer to the
+// Ford site's typography than the earlier condensed all-caps display face.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
@@ -50,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-(--color-paper) text-(--color-ink)">
         <a href="#main-content" className="skip-link">

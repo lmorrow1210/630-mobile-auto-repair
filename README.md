@@ -135,9 +135,11 @@ each has a `// TODO(verify)` comment at its definition:
   `src/app/globals.css`. The copper CTA (copper background, dark teal text) sits at ~4.2:1 contrast,
   which is fine for bold/uppercase button labels but worth keeping in mind if that combination is ever
   reused for smaller or regular-weight text.
-- **Type**: Anton (heavy condensed uppercase) for headlines — a bolder, more masculine garage-signage
-  feel than a standard bold weight — paired with IBM Plex Sans for UI/body text and IBM Plex Mono for
-  ticket-style labels (trust strip, service list numbering).
+- **Type**: Archivo (bold/extrabold, normal case) for headlines — a clean, non-condensed grotesque
+  closer to the Ford site's readability than an all-caps condensed display face — paired with
+  IBM Plex Sans for UI/body text and IBM Plex Mono for ticket-style labels (trust strip, service list
+  numbering, small uppercase eyebrows). Only those small mono/label elements use `uppercase`; headline
+  text (`h1`–`h4`) renders in normal title case.
 - **Header**: solid Deep Teal band (`--color-charcoal-soft`) rather than blending into the page
   background, so it reads as a distinct bar rather than floating nav links.
 - **Hero**: a bespoke road/open-sky illustration (`src/components/HeroSky.tsx`) — gradient sky, cloud
