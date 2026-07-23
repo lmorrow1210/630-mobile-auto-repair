@@ -241,11 +241,11 @@ export const faqs: FaqItem[] = [
   {
     question: "How does pricing work?",
     answer:
-      "We provide an estimate before any work begins, based on your vehicle and the issue you describe. Tell us the details by call, text, or the quote form and we'll follow up with pricing.",
+      "We provide an estimate before any work begins, based on your vehicle and the issue you describe. Call or text us the details and we'll follow up with pricing.",
   },
   {
-    question: "Are parts included in the quote?",
-    answer: null, // TODO(verify): confirm what's included in quoted pricing
+    question: "Are parts included in the price?",
+    answer: null, // TODO(verify): confirm what's included in pricing
   },
   {
     question: "Is there a diagnostic or travel fee?",

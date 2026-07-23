@@ -24,30 +24,29 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="pt-2 text-lg font-semibold text-(--color-ink)">Information We Collect</h2>
           <p>
-            When you use the quote request form, we ask for your name, mobile phone number, vehicle
-            year/make/model, a description of the problem, your ZIP code or service location, and
-            optionally your preferred timing. Submitting the form composes this information into a text
-            message addressed to {business.name} that opens in your own device&rsquo;s messaging app —
-            it is not transmitted to or stored on a server we operate.
+            This site does not have a contact form — every &ldquo;Call&rdquo; or &ldquo;Text&rdquo;
+            button simply opens your own device&rsquo;s phone or messaging app addressed to{" "}
+            {business.phoneDisplay}. We don&rsquo;t collect, receive, or store anything you type on this
+            website itself.
           </p>
           <p>
             If you call or text {business.phoneDisplay} directly, that phone number and any messages you
-            send are handled through standard carrier text messaging and are visible to us as the
-            message recipient, the same as any other text conversation.
+            send are handled through standard carrier phone/text service and are visible to us as the
+            recipient, the same as any other call or text conversation.
           </p>
 
           <h2 className="pt-2 text-lg font-semibold text-(--color-ink)">How Information Is Used</h2>
           <p>
-            Information you provide is used only to respond to your service request by phone or text. We
-            do not sell your information, and submitting a quote request does not enroll you in
-            marketing text messages.
+            Information you share by phone or text is used only to respond to your service request. We
+            do not sell your information, and contacting us does not enroll you in marketing text
+            messages.
           </p>
 
           <h2 className="pt-2 text-lg font-semibold text-(--color-ink)">Analytics</h2>
           <p>
             This site may record anonymous, aggregate interaction events (for example, which button was
             clicked and on which page) to understand how the site is used. These events do not include
-            your name, phone number, email, or the details you type into the quote form.
+            your name, phone number, or email.
           </p>
 
           <h2 className="pt-2 text-lg font-semibold text-(--color-ink)">Contact</h2>

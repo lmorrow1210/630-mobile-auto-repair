@@ -13,7 +13,7 @@ export function PricingReassurance() {
             {business.pricing!.map((p) => {
               const service = services.find((s) => s.slug === p.serviceSlug);
               return (
-                <div key={p.serviceSlug} className="rounded-lg border border-(--color-line) bg-white p-5">
+                <div key={p.serviceSlug} className="border-2 border-(--color-ink) bg-(--color-paper) p-5">
                   <h3 className="font-semibold text-(--color-ink)">{service?.name ?? p.serviceSlug}</h3>
                   <p className="mt-1 font-display text-2xl font-bold text-(--color-accent)">
                     From ${p.startingAt}
@@ -24,10 +24,10 @@ export function PricingReassurance() {
             })}
           </div>
         ) : (
-          <div className="mt-6 max-w-2xl rounded-lg border border-(--color-line) bg-white p-6">
+          <div className="mt-6 max-w-2xl border-2 border-(--color-ink) bg-(--color-paper) p-6">
             <p className="text-(--color-ink) leading-relaxed">
-              Get an estimate before work begins. Tell us about your vehicle and location so we can
-              provide an accurate quote.
+              Get an estimate before work begins. Tell us about your vehicle and location by call or
+              text so we can provide an accurate estimate.
             </p>
           </div>
         )}

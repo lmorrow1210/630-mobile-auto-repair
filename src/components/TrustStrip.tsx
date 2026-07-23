@@ -3,6 +3,8 @@ import { business } from "@/data/business";
 /**
  * Only verified trust signals render. Each item is conditional on its
  * underlying config value being non-null — no empty badges, ever.
+ * Styled as a ticket line (mono labels, hard dividers) rather than
+ * rounded-pill badges.
  */
 export function TrustStrip() {
   const items: string[] = ["All makes and models", "Home & workplace service", business.hours.label];
@@ -13,23 +15,20 @@ export function TrustStrip() {
   if (business.warranty) items.push(business.warranty);
 
   return (
-    <div className="border-y border-(--color-line) bg-(--color-paper-alt)">
-      <ul className="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-8 gap-y-3 px-4 py-4 text-sm font-medium text-(--color-ink-soft) md:justify-between md:px-6">
-        {items.map((item) => (
-          <li key={item} className="flex items-center gap-2">
-            <CheckIcon />
+    <div className="border-b-2 border-(--color-ink) bg-(--color-paper-alt)">
+      <ul className="mx-auto flex max-w-6xl flex-wrap px-4 md:px-6">
+        {items.map((item, i) => (
+          <li
+            key={item}
+            className={`flex items-center gap-2 py-3 pr-6 font-mono text-xs font-semibold uppercase tracking-wide text-(--color-ink) ${
+              i > 0 ? "border-l-2 border-(--color-line-dark)/30 pl-6" : ""
+            }`}
+          >
+            <span className="text-(--color-accent)">✓</span>
             {item}
           </li>
         ))}
       </ul>
     </div>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0 text-(--color-accent)">
-      <path d="M4 12.5l5 5L20 6.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }

@@ -8,12 +8,12 @@ type ButtonTone = "accent" | "dark" | "outline" | "ghost";
 
 const toneClasses: Record<ButtonTone, string> = {
   accent:
-    "bg-(--color-accent) text-(--color-accent-contrast) hover:bg-(--color-accent-dark) border border-transparent",
-  dark: "bg-(--color-ink) text-(--color-paper) hover:bg-(--color-charcoal-soft) border border-transparent",
+    "bg-(--color-accent) text-(--color-accent-contrast) hover:bg-(--color-accent-dark) border-2 border-(--color-accent)",
+  dark: "bg-(--color-ink) text-(--color-paper) hover:bg-(--color-charcoal-soft) border-2 border-(--color-ink)",
   outline:
-    "bg-transparent text-(--color-ink) border border-(--color-ink) hover:bg-(--color-ink) hover:text-(--color-paper)",
+    "bg-transparent text-(--color-ink) border-2 border-(--color-ink) hover:bg-(--color-ink) hover:text-(--color-paper)",
   ghost:
-    "bg-transparent text-(--color-paper) border border-(--color-paper)/40 hover:bg-(--color-paper)/10",
+    "bg-transparent text-(--color-paper) border-2 border-(--color-paper)/50 hover:bg-(--color-paper)/10",
 };
 
 type CallButtonProps = {
@@ -35,7 +35,7 @@ export function CallButton({
     <a
       href={business.telHref}
       onClick={() => trackEvent(event, { placement, device: deviceCategory() })}
-      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 py-3 text-base font-semibold transition-colors ${toneClasses[tone]} ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-bold uppercase tracking-wide transition-colors ${toneClasses[tone]} ${className}`}
     >
       <PhoneIcon />
       {label ?? `Call ${business.phoneDisplay}`}
@@ -53,7 +53,7 @@ type SmsButtonProps = {
 };
 
 export function SmsButton({
-  label = "Text Us for a Quote",
+  label = "Text Us",
   tone = "dark",
   placement,
   prefill,
@@ -70,7 +70,7 @@ export function SmsButton({
     <a
       href={business.smsHref}
       onClick={handleClick}
-      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 py-3 text-base font-semibold transition-colors ${toneClasses[tone]} ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-bold uppercase tracking-wide transition-colors ${toneClasses[tone]} ${className}`}
     >
       <TextIcon />
       {label}

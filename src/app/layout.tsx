@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Oswald, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -8,16 +8,24 @@ import { MobileStickyBar } from "@/components/MobileStickyBar";
 import { business, siteUrl } from "@/data/business";
 import { localBusinessSchema } from "@/lib/seo";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
-  weight: ["600", "700", "900"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["500", "600"],
   display: "swap",
 });
 
@@ -42,7 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${oswald.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-(--color-paper) text-(--color-ink)">
         <a href="#main-content" className="skip-link">

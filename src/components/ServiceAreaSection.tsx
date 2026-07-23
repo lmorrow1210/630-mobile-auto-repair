@@ -20,10 +20,10 @@ export function ServiceAreaSection({ currentCity }: { currentCity?: City }) {
           <li key={city.slug}>
             <Link
               href={`/${city.slug}`}
-              className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium transition-colors ${
+              className={`inline-flex min-h-11 items-center rounded-sm border-2 px-4 text-sm font-semibold uppercase tracking-wide transition-colors ${
                 currentCity?.slug === city.slug
                   ? "border-(--color-accent) bg-(--color-accent) text-(--color-accent-contrast)"
-                  : "border-(--color-line) text-(--color-ink-soft) hover:border-(--color-accent) hover:text-(--color-ink)"
+                  : "border-(--color-ink) text-(--color-ink-soft) hover:bg-(--color-ink) hover:text-(--color-paper)"
               }`}
             >
               {city.name}

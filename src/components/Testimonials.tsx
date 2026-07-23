@@ -29,7 +29,7 @@ export function Testimonials({ heading = "What Elmhurst Customers Are Saying" }:
           {testimonials.map((t) => (
             <blockquote
               key={t.author}
-              className="rounded-lg border border-(--color-line) bg-white p-6"
+              className="border-2 border-(--color-ink) bg-(--color-paper) p-6"
             >
               <p className="text-(--color-ink) leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
               <footer className="mt-4 text-sm font-semibold text-(--color-ink-soft)">

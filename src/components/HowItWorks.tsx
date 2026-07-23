@@ -1,5 +1,5 @@
 const STEPS = [
-  { title: "Call, text, or request a quote", detail: "Reach out however is easiest — phone, text, or the online form." },
+  { title: "Call or text us", detail: "Reach out however is easiest — a phone call or a text." },
   { title: "Tell us about your vehicle and the problem", detail: "Share the year, make, model, and what you're noticing." },
   { title: "Confirm the service, timing, and estimate", detail: "We'll go over the plan and estimate before anything starts." },
   { title: "We come to your location and complete the approved work", detail: "Suitable repairs are completed at your home or workplace." },
@@ -11,7 +11,7 @@ export function HowItWorks() {
       <h2 className="font-display text-3xl font-bold text-(--color-ink)">How It Works</h2>
       <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {STEPS.map((step, i) => (
-          <li key={step.title} className="relative rounded-lg border border-(--color-line) bg-white p-5">
+          <li key={step.title} className="relative border-2 border-(--color-ink) bg-(--color-paper) p-5">
             <span className="font-display text-2xl font-bold text-(--color-accent)">
               {String(i + 1).padStart(2, "0")}
             </span>

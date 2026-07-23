@@ -22,7 +22,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(answered)) }}
       />
       <h2 className="font-display text-3xl font-bold text-(--color-ink)">Frequently Asked Questions</h2>
-      <div className="mt-8 divide-y divide-(--color-line) border-y border-(--color-line)">
+      <div className="mt-8 divide-y-2 divide-(--color-ink) border-y-2 border-(--color-ink)">
         {answered.map((item, i) => {
           const open = openIndex === i;
           const panelId = `faq-panel-${i}`;

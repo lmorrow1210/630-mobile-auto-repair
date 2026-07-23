@@ -3,28 +3,29 @@
 /*
   Design tokens for 630 Mobile Auto Repair.
 
-  Vibe: evolves the existing site's black/white, bold-serif-headline identity
-  (arched gear mark, high-contrast photography) into a more restrained,
-  professional system — dark charcoal for authority, one warm accent for
-  every conversion action, a bold serif for headlines paired with a clean
-  sans for UI/body copy.
+  Vibe: a real shop's work-order/signage identity, not a tech-startup
+  landing page — cream paper, hard black rules, condensed uppercase
+  headline type (garage signage, not editorial serif), one accent color
+  used sparingly. Deliberately avoids the dark-hero + soft-serif +
+  rounded-card pattern common to generic site templates.
 */
 :root {
-  --color-ink: #14140f;        /* near-black charcoal, headlines/body on light */
+  --color-ink: #14140f;        /* near-black, headlines/body on light */
   --color-ink-soft: #3a3a33;   /* secondary text on light */
-  --color-paper: #faf9f5;      /* warm off-white background */
-  --color-paper-alt: #f0efe7;  /* section separation on light */
-  --color-charcoal: #1c1c17;   /* dark section background (authority) */
+  --color-paper: #f7f4ec;      /* cream paper background */
+  --color-paper-alt: #efe9d8;  /* section separation on light */
+  --color-charcoal: #1c1c17;   /* dark section background, used sparingly */
   --color-charcoal-soft: #2a2a23;
-  --color-line: #dedcd0;       /* hairline borders on light */
-  --color-line-dark: #3c3c33;  /* hairline borders on dark */
+  --color-line: #14140f;       /* hairline borders are ink, not gray */
+  --color-line-dark: #4a4a3f;
   --color-accent: #c7551a;     /* burnt-amber accent — CTAs only */
   --color-accent-dark: #a8460f;
   --color-accent-contrast: #fff8f0;
   --color-focus: #1e7a5f;      /* distinct focus ring, never used for CTAs */
 
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-ibm-plex);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 @theme inline {
@@ -42,6 +43,7 @@
   --color-focus: var(--color-focus);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 * {
@@ -77,7 +79,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), Impact, "Arial Narrow", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
 }
 
 /* Consistent, visible focus ring across the site — never rely on color alone. */

@@ -1,5 +1,5 @@
 import { CallButton, SmsButton } from "@/components/CtaButtons";
-import { HeroArt } from "@/components/HeroArt";
+import { ServiceTag } from "@/components/ServiceTag";
 import { business } from "@/data/business";
 
 type HeroProps = {
@@ -10,45 +10,41 @@ type HeroProps = {
   smsPrefill?: string;
 };
 
-export function Hero({ eyebrow, headline, subhead, cityName, smsPrefill }: HeroProps) {
+export function Hero({ headline, subhead, cityName, smsPrefill }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-(--color-charcoal) text-(--color-paper)">
-      <div className="absolute inset-0" role="img" aria-label="Illustration of a mobile mechanic servicing a car in a driveway">
-        <HeroArt className="h-full w-full object-cover opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-(--color-charcoal) via-(--color-charcoal)/75 to-(--color-charcoal)/50" />
-      </div>
+    <section className="border-b-2 border-(--color-ink) bg-(--color-paper)">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[1.3fr_1fr] md:items-center md:px-6 md:py-20">
+        <div className="flex flex-col gap-6">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-(--color-accent)">
+            Mobile Service · No Shop Visit Required
+          </p>
+          <h1 className="max-w-xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-(--color-ink) sm:text-5xl">
+            {headline}
+          </h1>
+          <p className="max-w-lg text-lg leading-relaxed text-(--color-ink-soft)">{subhead}</p>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 py-14 md:px-6 md:py-24">
-        {eyebrow && (
-          <span className="inline-flex w-fit items-center rounded-full border border-(--color-paper)/25 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-(--color-paper)/80">
-            {eyebrow}
-          </span>
-        )}
-        <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
-          {headline}
-        </h1>
-        <p className="max-w-xl text-lg leading-relaxed text-(--color-paper)/85">{subhead}</p>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <SmsButton
+              tone="accent"
+              placement="hero"
+              event="hero_sms_click"
+              prefill={smsPrefill ?? business.smsPrefillTemplate("")}
+            />
+            <CallButton
+              label={`Call ${business.phoneDisplay}`}
+              tone="outline"
+              placement="hero"
+              event="hero_call_click"
+            />
+          </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <SmsButton
-            label="Text Us for a Quote"
-            tone="accent"
-            placement="hero"
-            event="hero_sms_click"
-            prefill={smsPrefill ?? business.smsPrefillTemplate("")}
-          />
-          <CallButton
-            label={`Call ${business.phoneDisplay}`}
-            tone="ghost"
-            placement="hero"
-            event="hero_call_click"
-          />
+          <p className="border-t-2 border-(--color-ink) pt-3 text-sm font-medium text-(--color-ink-soft)">
+            {business.hours.label} • All makes and models
+            {cityName ? ` • Serving ${cityName}` : ""}
+          </p>
         </div>
 
-        <p className="text-sm font-medium text-(--color-paper)/70">
-          {business.hours.label} • All makes and models
-          {cityName ? ` • Serving ${cityName}` : ""}
-        </p>
+        <ServiceTag cityName={cityName} />
       </div>
     </section>
   );

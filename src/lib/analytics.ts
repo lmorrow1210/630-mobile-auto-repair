@@ -19,10 +19,6 @@ export type AnalyticsEvent =
   | "hero_sms_click"
   | "sticky_sms_click"
   | "footer_call_click"
-  | "quote_form_start"
-  | "quote_form_submit"
-  | "quote_form_success"
-  | "quote_form_error"
   | "service_card_click"
   | "review_link_click"
   | "final_cta_click";

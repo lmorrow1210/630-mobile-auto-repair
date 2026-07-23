@@ -4,6 +4,9 @@ Next.js (App Router) + TypeScript + Tailwind CSS. Statically generated, mobile-f
 around a single truthfulness rule: **nothing renders unless it's backed by a verified value in
 `src/data/business.ts`.**
 
+There is no contact form anywhere on the site — every conversion path is a direct Call or Text
+button. This was a deliberate decision (see "No form" below), not an oversight.
+
 ## Local development
 
 ```bash
@@ -27,32 +30,45 @@ pages, reviews, contact, privacy policy) — confirmed passing with `tsc --noEmi
 
 ## Deployment
 
-No hosting/CI config existed in the source project to preserve, so this is a standard Next.js app —
-deploy it to Vercel, or any Node host that runs `npm run build && npm start`. Set `siteUrl` in
-`src/data/business.ts` to the real production domain before launch (see TODOs below).
+### GitHub Pages (live now)
 
-## Form configuration — there is no backend
+This repo deploys automatically to GitHub Pages via `.github/workflows/deploy-pages.yml` on every
+push to `main`: **https://lmorrow1210.github.io/630-mobile-auto-repair/**
 
-Per direction from the business owner, the quote form (`src/components/QuoteForm.tsx`) does **not**
-submit to any server. On submit, it composes the entered details into a plain-text message and opens
-`sms:+16304470231&body=...` (or `?body=` on Android — see `src/lib/sms.ts`) so the visitor's own
-Messages app sends it directly to the shop. Nothing is transmitted to, or stored on, infrastructure we
-control. If a real backend/CRM is added later, replace the `window.location.href = href` call in
-`QuoteForm.tsx`'s `handleSubmit` with a `fetch()` to that endpoint and gate the URL behind an
-environment variable (e.g. `NEXT_PUBLIC_QUOTE_FORM_ENDPOINT`) — don't hardcode it.
+The repo's Settings → Pages → Build and deployment source is set to **GitHub Actions** (not "Deploy
+from a branch" — that default only renders `README.md` as a webpage, which is what you'd see if this
+ever gets switched back). The workflow runs `next build` with `GITHUB_PAGES=true`, which flips
+`next.config.ts` into static-export mode (`output: "export"`) with `basePath: "/630-mobile-auto-repair"`
+so every internal link resolves correctly under the project-pages subpath, and uploads the `out/`
+directory as the Pages artifact.
+
+### Anywhere else
+
+Outside of GitHub Pages this is a standard Next.js app — deploy to Vercel, or any Node host that runs
+`npm run build && npm start`, with no `GITHUB_PAGES` env var set (so it runs as a normal server build,
+no `basePath`). Set `siteUrl` in `src/data/business.ts` to the real production domain before launch —
+it currently points at `https://630mobileauto.com` for canonical URLs/sitemap/schema regardless of
+where a given build is previewed.
+
+## No form — call or text only
+
+The business owner was explicit: no on-site quote/contact form, no "Request a Quote" language
+anywhere. Every CTA is a direct `tel:` or `sms:` link (`src/components/CtaButtons.tsx`,
+`src/lib/sms.ts`) — nothing is collected or transmitted by the site itself. The `/contact` page is
+just phone/email/hours, not a form.
 
 ## Analytics configuration
 
 No analytics provider existed in the source project. `src/lib/analytics.ts` pushes structured events
-(`hero_call_click`, `quote_form_submit`, `service_card_click`, etc. — see the file for the full list)
+(`hero_call_click`, `sticky_sms_click`, `service_card_click`, etc. — see the file for the full list)
 to `window.dataLayer`, the standard GTM/GA4 convention. To wire up a real provider:
 
 1. Add the provider's script tag to `src/app/layout.tsx` (e.g. a GTM container snippet).
 2. That's it — `dataLayer.push()` calls already happen at every conversion point; GTM will pick them
    up once the container is installed.
 
-Event payloads never include name, phone, email, or the vehicle-problem text — only placement/page/
-device context, per the brief's privacy requirement.
+Event payloads never include name, phone, or email — only placement/page/device context, per the
+brief's privacy requirement.
 
 ## Updating services and cities
 
@@ -83,13 +99,10 @@ the `services` array.
 ## Replacing photography
 
 There is no authentic photography of the real van, mechanic, or customers yet, so the hero uses a
-bespoke SVG illustration (`src/components/HeroArt.tsx`) instead of a stock photo — deliberately, so
-nothing implies a stock model is the actual business. Once real photos exist:
-
-1. Add optimized images (WebP/AVIF, reasonable dimensions) to `public/images/`.
-2. In `src/components/Hero.tsx`, replace the `<HeroArt />` usage with a Next.js `<Image fill priority>`
-   pointing at the real photo, with meaningful `alt` text.
-3. Delete `HeroArt.tsx` once nothing references it.
+bespoke "work order tag" graphic (`src/components/ServiceTag.tsx`) instead of a stock photo —
+deliberately, so nothing implies a stock model is the actual business. Once real photos exist, you can
+either keep the tag graphic alongside a photo elsewhere on the page, or replace it: add optimized
+images (WebP/AVIF) to `public/images/` and use a Next.js `<Image>` with meaningful `alt` text.
 
 The favicon (`src/app/favicon.ico`) is still the Next.js default — replace it with a real brand mark
 before launch.
@@ -106,7 +119,7 @@ each has a `// TODO(verify)` comment at its definition:
 - `responseTimeLanguage` — do not add same-day/response-time claims without confirmation.
 - `social.facebook` / `social.instagram` — add only if a real, active profile exists.
 - Several FAQ answers are `null` (`answer: null` in the `faqs` array in `business.ts`) and are skipped
-  by the FAQ component: presence requirement, what's included in quotes, diagnostic/travel fees,
+  by the FAQ component: presence requirement, what's included in pricing, diagnostic/travel fees,
   weather policy, payment methods, warranty, and appointment turnaround time.
 - `siteUrl` — confirm the production domain (currently `https://630mobileauto.com`) before launch.
 - Real photography (see above) and a real favicon/app icon.
@@ -114,10 +127,15 @@ each has a `// TODO(verify)` comment at its definition:
 
 ## Design notes
 
-- **Palette**: warm off-white paper background, near-black ink for text, dark charcoal for
-  high-authority sections (hero, final CTA, footer), one burnt-amber accent reserved for conversion
-  actions only. Tokens are CSS custom properties in `src/app/globals.css`.
-- **Type**: Fraunces (bold serif) for headlines — an evolution of the existing site's bold serif
-  headline treatment — paired with Inter for UI/body text.
+- **Palette**: cream paper background, near-black ink for text and hairline borders, dark charcoal
+  used sparingly for high-authority sections (final CTA, footer, contact band), one burnt-amber accent
+  reserved for conversion actions only. Tokens are CSS custom properties in `src/app/globals.css`.
+- **Type**: Oswald (bold condensed uppercase) for headlines — a garage-signage/work-order feel rather
+  than an editorial serif — paired with IBM Plex Sans for UI/body text and IBM Plex Mono for
+  ticket-style labels (trust strip, service tag, service list numbering).
+- **Motifs**: hard 2px ink borders instead of soft shadows/rounded cards, a "mobile service tag"
+  graphic in the hero instead of a stock hero photo or car illustration, and a numbered ticket-list
+  layout for services instead of a generic icon-card grid — chosen specifically to avoid the
+  dark-hero/rounded-card/serif-display pattern common to AI-generated site templates.
 - **Logo**: a redrawn arch-and-gear mark in the spirit of the existing logo (`src/components/Logo.tsx`),
   not a copy of the original artwork.

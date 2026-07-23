@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { cities, services, siteUrl } from "@/data/business";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = ["/", "/services", "/service-area", "/reviews", "/contact", "/privacy-policy"];
 

@@ -17,7 +17,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-(--color-line) bg-(--color-paper)/95 backdrop-blur supports-[backdrop-filter]:bg-(--color-paper)/80">
+    <header className="sticky top-0 z-40 border-b-2 border-(--color-ink) bg-(--color-paper)">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
           <Logo />
@@ -40,7 +40,7 @@ export function Header() {
             href="/contact"
             className="text-sm font-semibold text-(--color-ink) hover:text-(--color-accent) transition-colors"
           >
-            Request a Quote
+            Contact
           </Link>
           <CallButton placement="header" event="header_call_click" label={business.phoneDisplay} />
         </div>
@@ -60,7 +60,7 @@ export function Header() {
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-(--color-line) text-(--color-ink)"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-sm border-2 border-(--color-ink) text-(--color-ink)"
           >
             <MenuIcon open={open} />
           </button>
@@ -71,7 +71,7 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="lg:hidden border-t border-(--color-line) bg-(--color-paper) px-4 py-4"
+          className="lg:hidden border-t-2 border-(--color-ink) bg-(--color-paper) px-4 py-4"
         >
           <ul className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
@@ -91,7 +91,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className="block min-h-12 py-3 text-base font-semibold text-(--color-accent)"
               >
-                Request a Quote
+                Contact
               </Link>
             </li>
           </ul>

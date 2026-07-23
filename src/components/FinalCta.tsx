@@ -1,9 +1,5 @@
-"use client";
-
-import Link from "next/link";
 import { CallButton, SmsButton } from "@/components/CtaButtons";
 import { business } from "@/data/business";
-import { trackEvent } from "@/lib/analytics";
 
 export function FinalCta() {
   return (
@@ -13,8 +9,8 @@ export function FinalCta() {
           Tell Us What&rsquo;s Wrong With Your Vehicle
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-(--color-paper)/80 leading-relaxed">
-          Send your vehicle details by text or request a quote online. We&rsquo;ll help determine
-          whether the repair can be completed at your Elmhurst location.
+          Call or text your vehicle details and we&rsquo;ll help determine whether the repair can be
+          completed at your location.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <SmsButton
@@ -30,13 +26,6 @@ export function FinalCta() {
             placement="final_cta"
             event="final_cta_click"
           />
-          <Link
-            href="/contact"
-            onClick={() => trackEvent("final_cta_click", { placement: "final_cta" })}
-            className="inline-flex min-h-12 items-center justify-center rounded-md border border-(--color-paper)/40 px-6 py-3 text-base font-semibold hover:bg-(--color-paper)/10"
-          >
-            Request a Quote
-          </Link>
         </div>
       </div>
     </section>
