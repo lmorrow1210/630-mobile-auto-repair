@@ -99,10 +99,10 @@ the `services` array.
 ## Replacing photography
 
 There is no authentic photography of the real van, mechanic, or customers yet, so the hero uses a
-bespoke "work order tag" graphic (`src/components/ServiceTag.tsx`) instead of a stock photo —
-deliberately, so nothing implies a stock model is the actual business. Once real photos exist, you can
-either keep the tag graphic alongside a photo elsewhere on the page, or replace it: add optimized
-images (WebP/AVIF) to `public/images/` and use a Next.js `<Image>` with meaningful `alt` text.
+bespoke road/open-sky illustration (`src/components/HeroSky.tsx`) instead of a stock photo —
+deliberately, so nothing implies a stock model is the actual business. Once real photos exist, replace
+the `<HeroSky />` usage in `Hero.tsx` with a Next.js `<Image fill priority>` pointing at the real photo
+(optimized WebP/AVIF, meaningful `alt` text), and delete `HeroSky.tsx` once nothing references it.
 
 The favicon (`src/app/favicon.ico`) is still the Next.js default — replace it with a real brand mark
 before launch.
@@ -135,11 +135,16 @@ each has a `// TODO(verify)` comment at its definition:
   `src/app/globals.css`. The copper CTA (copper background, dark teal text) sits at ~4.2:1 contrast,
   which is fine for bold/uppercase button labels but worth keeping in mind if that combination is ever
   reused for smaller or regular-weight text.
-- **Type**: Oswald (bold condensed uppercase) for headlines — a garage-signage/work-order feel rather
-  than an editorial serif — paired with IBM Plex Sans for UI/body text and IBM Plex Mono for
-  ticket-style labels (trust strip, service tag, service list numbering).
-- **Motifs**: hard 2px ink borders instead of soft shadows/rounded cards, a "mobile service tag"
-  graphic in the hero instead of a stock hero photo or car illustration, and a numbered ticket-list
+- **Type**: Anton (heavy condensed uppercase) for headlines — a bolder, more masculine garage-signage
+  feel than a standard bold weight — paired with IBM Plex Sans for UI/body text and IBM Plex Mono for
+  ticket-style labels (trust strip, service list numbering).
+- **Header**: solid Deep Teal band (`--color-charcoal-soft`) rather than blending into the page
+  background, so it reads as a distinct bar rather than floating nav links.
+- **Hero**: a bespoke road/open-sky illustration (`src/components/HeroSky.tsx`) — gradient sky, cloud
+  bands, and a converging road with copper edge lines — brings back the "photo of a road" mood of the
+  original site without stock photography. Replaced an earlier "service tag" hang-tag graphic that
+  read as an odd non sequitur next to the headline.
+- **Motifs**: hard 2px ink borders instead of soft shadows/rounded cards, and a numbered ticket-list
   layout for services instead of a generic icon-card grid — chosen specifically to avoid the
   dark-hero/rounded-card/serif-display pattern common to AI-generated site templates.
 - **Logo**: a redrawn arch-and-gear mark in the spirit of the existing logo (`src/components/Logo.tsx`),

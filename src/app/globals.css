@@ -28,7 +28,7 @@
   --color-accent-contrast: #092b2e; /* dark teal text on copper, per spec */
   --color-focus: #2d6cdf;      /* distinct focus ring, never used for CTAs */
 
-  --font-display: var(--font-oswald);
+  --font-display: var(--font-anton);
   --font-sans: var(--font-ibm-plex);
   --font-mono: var(--font-ibm-plex-mono);
 }

@@ -17,10 +17,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-(--color-ink) bg-(--color-paper)">
+    <header className="sticky top-0 z-40 border-b-2 border-(--color-ink) bg-(--color-charcoal-soft)">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
-          <Logo />
+          <Logo variant="light" />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:flex items-center gap-7">
@@ -28,7 +28,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-(--color-ink-soft) hover:text-(--color-ink) transition-colors"
+              className="text-sm font-medium text-(--color-paper)/80 hover:text-(--color-paper) transition-colors"
             >
               {link.label}
             </Link>
@@ -38,7 +38,7 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/contact"
-            className="text-sm font-semibold text-(--color-ink) hover:text-(--color-accent) transition-colors"
+            className="text-sm font-semibold text-(--color-paper) hover:text-(--color-accent) transition-colors"
           >
             Contact
           </Link>
@@ -60,7 +60,7 @@ export function Header() {
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-sm border-2 border-(--color-ink) text-(--color-ink)"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-sm border-2 border-(--color-paper)/50 text-(--color-paper)"
           >
             <MenuIcon open={open} />
           </button>
@@ -71,7 +71,7 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="lg:hidden border-t-2 border-(--color-ink) bg-(--color-paper) px-4 py-4"
+          className="lg:hidden border-t-2 border-(--color-ink) bg-(--color-charcoal-soft) px-4 py-4"
         >
           <ul className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
@@ -79,7 +79,7 @@ export function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block min-h-12 py-3 text-base font-medium text-(--color-ink) border-b border-(--color-line)"
+                  className="block min-h-12 py-3 text-base font-medium text-(--color-paper) border-b border-(--color-paper)/20"
                 >
                   {link.label}
                 </Link>
